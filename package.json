@@ -1,6 +1,6 @@
 {
   "name": "grapesjs-plugin-s3-publish",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "grapesjs-plugin-s3-publish",
   "main": "dist/index.js",
   "repository": {

@@ -2,15 +2,15 @@ import AWS from "aws-sdk";
 import axios from "axios";
 
 export default (editor, opts = {}) => {
-  const { accessKeyId, secretAccessKey, bucketName, prefix } = opts;
+  const { accessKeyId, secretAccessKey, bucketName, id } = opts;
   const panelManager = editor.Panels;
   const htmlContentType = "text/html";
   const cssContentType = "text/css";
   const btnText = "Publicar";
   const icon = "fa fa-paper-plane";
   const preHtml =
-    '<!doctype html><html lang="en"><head><meta charset="utf-8"><link rel="stylesheet" href="./style.css"></head><body>';
-  const postHtml = "</body><html>";
+    '<!doctype html><html lang="en"><head><meta charset="utf-8"><link rel="stylesheet" href="./style.css"></head>';
+  const postHtml = "<html>";
   const preCss = "";
   const postCss = "";
 
@@ -37,8 +37,10 @@ export default (editor, opts = {}) => {
       const styleFileBody = `${preCss}${editor.getCss()}${postCss}`;
 
       const { data } = await axios.post(`http://localhost:8056/lp-builder`, {
-        bucketName: "lp-builder-abare-definitivo10.com",
-        lp: [
+        bucketName: bucketName,
+        lp: {
+          "id": id,
+          "content": [
           {
             body: {
               Body: htmlFileBody,
@@ -53,7 +55,7 @@ export default (editor, opts = {}) => {
               ContentType: cssContentType,
             },
           },
-        ],
+        ]},
       });
 
       console.log(data);

@@ -36,7 +36,7 @@ export default (editor, opts = {}) => {
       const htmlFileBody = `${preHtml}${editor.getHtml()}${postHtml}`;
       const styleFileBody = `${preCss}${editor.getCss()}${postCss}`;
 
-      const { data } = await axios.post(`http://localhost:8056/lp-builder`, {
+      const { data } = await axios.post(`http://localhost:8056/lp-builder/deploy/s3`, {
         bucketName: bucketName,
         lp: {
           "id": id,

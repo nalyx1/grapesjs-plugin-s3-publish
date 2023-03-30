@@ -1,6 +1,6 @@
 {
   "name": "@abare/grapesjs-plugin-s3-publish",
-  "version": "2.0.1",
+  "version": "1.0.7",
   "description": "grapesjs-plugin-s3-publish",
   "main": "dist/index.js",
   "repository": {
